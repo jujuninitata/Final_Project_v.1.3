@@ -1,0 +1,38 @@
+DBDiagram
+{
+    https://dbdiagram.io/d/63856a59c9abfc611175c53f
+}
+
+create model untuk user
+{
+    yarn add pg
+    yarn sequelize-cli model:generate --name user --attributes userid:string,email:string,password:string
+    yarn sequelize-cli db:migrate
+
+    ===role===
+    yarn sequelize-cli model:generate --name role --attributes roleId:Integer,roleName:string
+    yarn sequelize-cli db:migrate
+
+    ==profile==
+    yarn sequelize-cli model:generate --name profile --attributes userid:string,nip:string,email:string,nama:string,tempatlahir:string,tanggallahir:date,jeniskelamin:Integer,telp:string,kodeunit:string,jabatan:string,statusnikah:Integer,agama:Integer,alamat:string,kodeprovinsi:Integer,kodekota:Integer,kodekecamatan:Integer,kodekelurahan:Integer,kodepos:Integer,rt:Integer,rw:Integer,roleId:Integer
+    yarn sequelize-cli db:migrate
+
+    ==Cuti==
+    yarn sequelize-cli model:generate --name trxcuti --attributes idcuti:Integer
+    ,userid:string,idjenisCUti:Integer,tanggalmulai:date,tanggalakhir:date,durasi:Integer,alasan:string,status:string,createdate:date,approveby:string,approvalreason:string,approvalstatus:string
+    yarn sequelize-cli db:migrate
+
+    ===master data ==
+    yarn sequelize-cli model:generate --name jeniscuti --attributes idjeniscuti:Integer,namacuti:string,maxhari:Integer,status:Integer
+    yarn sequelize-cli model:generate --name agama --attributes kodeagama:Integer,agama:string,status:Integer
+    yarn sequelize-cli model:generate --name unitkerja --attributes kodeunit:Integer,namaunit:string,status:Integer
+    yarn sequelize-cli model:generate --name jabatan --attributes kodejabatan:Integer,namajabatan:string,status:Integer
+    yarn sequelize-cli model:generate --name provinsi --attributes kodeprovinsi:Integer,provinsi:string,status:Integer
+    yarn sequelize-cli model:generate --name kota --attributes kodekota:Integer,kodeprovinsi:Integer,kota:string,status:Integer
+    yarn sequelize-cli model:generate --name kecamatan --attributes kodekecamatan:Integer,kodekota:Integer,kecamatan:string,status:Integer
+    yarn sequelize-cli model:generate --name kelurahan --attributes kodekelurahan:Integer,kodekecamatan:Integer,kelurahan:string,status:Integer
+
+}
+
+
+
