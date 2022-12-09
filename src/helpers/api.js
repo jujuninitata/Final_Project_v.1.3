@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
-const BASE_URL= process.env.BASE_URL
+const BASE_URL= process.env.REACT_APP_BASE_URL
 // import { BASE_URL, USERNAME, PASSWORD } from './app';
 // const token = getCookie("accessToken");
 const token = Cookies.get('token');
