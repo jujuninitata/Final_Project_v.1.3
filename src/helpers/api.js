@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
-
+const BASE_URL= process.env.BASE_URL
 // import { BASE_URL, USERNAME, PASSWORD } from './app';
 // const token = getCookie("accessToken");
 const token = Cookies.get('token');
@@ -11,7 +11,7 @@ const headers = {
   Authorization: 'Bearer ' + token,
 };
 
-const BASE_URL = 'http://localhost:8000/api/v1/';
+// const BASE_URL = 'http://localhost:8000/api/v1/';
 
 async function callAPI(method, path) {
   const headers = {
