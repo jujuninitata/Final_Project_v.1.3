@@ -27,6 +27,7 @@ import Pegawai from "./pages/HR/Pegawai";
 import Approval from "./pages/HR/Cuti/Approval";
 import CreateNewPegawai from "./pages/HR/Pegawai/CreateNew";
 import RegisterGoogle from "./pages/RegisterGoogle";
+import ForgotPassword from "./pages/ForgotPassword";
 import DetailCuti from "./pages/User/Cuti/detail";
 import CancelCuti from "./pages/User/Cuti/Cancel";
 import DetailCutiHR from "./pages/HR/Cuti/detail";
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
   {
     path: "/register/google",
     element: <RegisterGoogle />,
+  },
+  {
+    path: "/forgotpassword",
+    element: <ForgotPassword />,
   },
   {
     path: "/home",

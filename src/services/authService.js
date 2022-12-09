@@ -34,4 +34,12 @@ const logout = async () => {
   window.location.href = "/login";
 };
 
-export { login, logout, register, loginWithGoogle };
+const forgotPassword = async (body) => {
+  const response = await post(`auth/forgotPassword`, body);
+  //if response is not 401, then return response.data
+  console.log(response);
+
+  return response;
+};
+
+export { login, logout, register, loginWithGoogle, forgotPassword };
