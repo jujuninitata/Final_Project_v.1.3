@@ -1,18 +1,14 @@
-import { Button, Flex, Heading, Spacer, Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
+import {  Heading,  Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import New from '../../../components/Cuti/HR/New';
 import Approved from '../../../components/Cuti/HR/Approved';
 import Rejected from '../../../components/Cuti/HR/Rejected';
 import Canceled from '../../../components/Cuti/HR/Cancel';
 import History from '../../../components/Cuti/HR/History';
 import Layout from '../../../components/Dashboard/Layout';
-import { getTrxCutiByUserId, getAllTrxCuti } from '../../../services/trxCutiService';
-import useGlobal from '../../../store/global';
+import { getAllTrxCuti } from '../../../services/trxCutiService';
 
 const Cuti = () => {
-  const session = useGlobal((state) => state.session);
-  const navigate = useNavigate();
   const [listAll, setListAll] = useState([]);
   const [listNew, setListNew] = useState([]);
   const [listApproved, setListApproved] = useState([]);
@@ -21,10 +17,10 @@ const Cuti = () => {
   useEffect(() => {
     getAllTrxCuti().then((res) => {
       setListAll(res.data);
-      setListNew(res.data.filter((item) => item.status == '1'));
-      setListApproved(res.data.filter((item) => item.status == '2'));
-      setListRejected(res.data.filter((item) => item.status == '3'));
-      setListCanceled(res.data.filter((item) => item.status == '4'));
+      setListNew(res.data.filter((item) => item.status === '1'));
+      setListApproved(res.data.filter((item) => item.status === '2'));
+      setListRejected(res.data.filter((item) => item.status === '3'));
+      setListCanceled(res.data.filter((item) => item.status === '4'));
     });
   }, []);
   return (

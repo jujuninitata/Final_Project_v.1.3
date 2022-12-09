@@ -24,16 +24,16 @@ const Inbox = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (session.role.toLowerCase() == "user") {
+      if (session.role.toLowerCase() === "user") {
         const { data } = await getTrxCutiByUserId(session.userid);
         const filteredData = data.filter(
-          (item) => item.status == "2" || item.status == "3"
+          (item) => item.status === "2" || item.status === "3"
         );
         console.log(filteredData);
         setListInbox(filteredData);
       } else {
         const { data } = await getAllTrxCuti();
-        const filteredData = data.filter((item) => item.status == "1");
+        const filteredData = data.filter((item) => item.status === "1");
         console.log(filteredData);
         setListInbox(filteredData);
       }

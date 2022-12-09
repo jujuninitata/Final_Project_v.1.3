@@ -1,5 +1,4 @@
 import { Box, VStack } from '@chakra-ui/react';
-import { FunctionComponent } from 'react';
 import { Header } from './Header';
 
 const Layout = ({ children }) => {

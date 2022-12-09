@@ -9,7 +9,6 @@ import {
   TableContainer,
   Tbody,
   Td,
-  Text,
   Textarea,
   Tr,
   useToast,
@@ -20,10 +19,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Layout from '../../../components/Dashboard/Layout';
 import { getTrxCutiDetail } from '../../../services/trxCutiService';
 import { cancelCuti } from '../../../services/trxCutiService';
-import useGlobal from '../../../store/global';
+
 
 const Cancel = () => {
-  const session = useGlobal((state) => state.session);
   let { cutiId } = useParams();
   const [detail, setDetail] = useState({});
   const [catatan, setCatatan] = useState(null);
@@ -33,7 +31,6 @@ const Cancel = () => {
   const navigate = useNavigate();
   useEffect(() => {
     getTrxCutiDetail(cutiId).then((res) => {
-     // console.log(res.data);
       setDetail(res.data);
     });
   }, []);

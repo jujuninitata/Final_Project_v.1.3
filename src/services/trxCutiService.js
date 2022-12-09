@@ -1,6 +1,5 @@
-import axios from 'axios';
-import Cookies from 'js-cookie';
-import { get, post, put, del } from '../helpers/api';
+
+import { get, post, put } from '../helpers/api';
 
 const getAllTrxCuti = async () => {
   const response = await get(`trxcuti`);

@@ -9,7 +9,6 @@ import {
   Td,
   Tr,
   useToast,
-  h1,
 } from "@chakra-ui/react";
 import { SingleDatepicker } from "chakra-dayzed-datepicker";
 import React, { useEffect, useState } from "react";
@@ -54,7 +53,7 @@ const CreateNewPegawai = () => {
   const {
     handleSubmit,
     register,
-    formState: { errors, isSubmitting },
+    //formState: { errors, isSubmitting },
   } = useForm();
   const toast = useToast({
     position: "top",

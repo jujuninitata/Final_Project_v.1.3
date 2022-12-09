@@ -11,18 +11,15 @@ import {
   Heading,
   Text,
   useColorModeValue,
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
+
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { useToast } from "@chakra-ui/react";
-import { Link as RouterLink, redirect, useNavigate } from "react-router-dom";
-import axios from "axios";
+// import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { login } from "../services/authService";
 import { useEffect, useState } from "react";
-import { GoogleLogin, useGoogleLogout } from "react-google-login";
+// import { useGoogleLogout } from "react-google-login";
 import { gapi } from "gapi-script";
 import LoginGoogle from "../components/LoginGoogle";
 import useGlobal from "../store/global";
@@ -37,12 +34,12 @@ export default function Login() {
   const {
     handleSubmit,
     register,
-    formState: { errors, isSubmitting },
+   // formState: { errors, isSubmitting },
   } = useForm();
-  const { signOut } = useGoogleLogout({
-    clientId,
-    onLogoutSuccess: () => alert("Logout made successfully"),
-  });
+  // const { signOut } = useGoogleLogout({
+  //   clientId,
+  //   onLogoutSuccess: () => alert("Logout made successfully"),
+  // });
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const toast = useToast({

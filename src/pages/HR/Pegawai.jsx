@@ -3,7 +3,6 @@ import {
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
@@ -19,7 +18,6 @@ import Layout from "../../components/Dashboard/Layout";
 import { getAllProfile } from "../../services/profileService";
 import { useNavigate } from "react-router-dom";
 import { AiFillEdit } from "react-icons/ai";
-import { HiMagnifyingGlass } from "react-icons/hi";
 import { FiTrash2 } from "react-icons/fi";
 import { MdVisibility } from "react-icons/md";
 

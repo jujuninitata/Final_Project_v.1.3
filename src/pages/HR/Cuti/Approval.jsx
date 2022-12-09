@@ -9,7 +9,6 @@ import {
   TableContainer,
   Tbody,
   Td,
-  Text,
   Textarea,
   Tr,
   useToast,

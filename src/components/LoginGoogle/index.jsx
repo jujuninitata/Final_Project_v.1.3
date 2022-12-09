@@ -1,6 +1,5 @@
 import React from "react";
 import { GoogleLogin } from "react-google-login";
-import { gapi } from "gapi-script";
 import useGlobal from "../../store/global";
 import { Button, useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +14,7 @@ const LoginGoogle = () => {
   const toast = useToast({
     position: "top",
   });
-  const googleMail = useGlobal((state) => state.googleMail);
+ 
   const setGoogleMail = useGlobal((state) => state.setGoogleMail);
   const onSuccess = (res) => {
     console.log("Login Success: currentUser:", res.profileObj);

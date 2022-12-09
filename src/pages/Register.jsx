@@ -26,7 +26,7 @@ export default function Register() {
     handleSubmit,
     register,
     watch,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();

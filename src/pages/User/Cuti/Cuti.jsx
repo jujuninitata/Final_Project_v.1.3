@@ -21,10 +21,10 @@ const Cuti = () => {
   useEffect(() => {
     getTrxCutiByUserId(session.userid).then((res) => {
       setListAll(res.data);
-      setListNew(res.data.filter((item) => item.status == '1'));
-      setListApproved(res.data.filter((item) => item.status == '2'));
-      setListRejected(res.data.filter((item) => item.status == '3'));
-      setListCanceled(res.data.filter((item) => item.status == '4'));
+      setListNew(res.data.filter((item) => item.status === '1'));
+      setListApproved(res.data.filter((item) => item.status === '2'));
+      setListRejected(res.data.filter((item) => item.status === '3'));
+      setListCanceled(res.data.filter((item) => item.status === '4'));
     });
   }, []);
   return (

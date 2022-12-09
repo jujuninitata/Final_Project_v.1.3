@@ -1,5 +1,3 @@
-import axios from "axios";
-import Cookies from "js-cookie";
 import { get, post } from "../helpers/api";
 
 const getAllProfile = async () => {

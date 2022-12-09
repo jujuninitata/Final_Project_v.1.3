@@ -1,5 +1,5 @@
-import { chakra, Box, Button, Center, Container, Heading, Text, VStack, Stack } from '@chakra-ui/react';
-import { FunctionComponent } from 'react';
+import { chakra, Box,Container, Heading,Stack } from '@chakra-ui/react';
+
 
 const HeroSection = () => {
   return (

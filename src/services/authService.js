@@ -1,6 +1,6 @@
-import axios from "axios";
+
 import Cookies from "js-cookie";
-import { get, post } from "../helpers/api";
+import {  post } from "../helpers/api";
 
 const login = async (body) => {
   const response = await post(`auth/login`, body);

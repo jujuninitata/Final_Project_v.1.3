@@ -1,7 +1,7 @@
 import { Button, Heading, Select, Table, TableContainer, Tbody, Td, Textarea, Tr, useToast } from '@chakra-ui/react';
 import { SingleDatepicker } from 'chakra-dayzed-datepicker';
 import React, { useEffect, useState } from 'react';
-import { useForm, useWatch } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../../../components/Dashboard/Layout';
 import { getJenisCutibyUserId} from '../../../services/jenisCutiService';
@@ -20,8 +20,7 @@ const CreateNew = () => {
   const {
     handleSubmit,
     register,
-    trigger,
-    formState: { errors, isSubmitting },
+    //formState: { errors, isSubmitting },
   } = useForm();
   const toast = useToast({
     position: 'top',
@@ -33,12 +32,7 @@ const CreateNew = () => {
     setDurasiCuti(durasi);
   }, [startDate, endDate]);
 
-  // useEffect(() => {
-  //   getAllJenisCuti().then((res) => {
-  //     console.log(res.data);
-  //     setJenisCuti(res.data);
-  //   });
-  // }, []);
+
 
   useEffect(() => {
     getJenisCutibyUserId(session.userid).then((res) => {
@@ -52,7 +46,7 @@ const CreateNew = () => {
     const child = e.target.childNodes[e.target.selectedIndex]
     const val = child.getAttribute("id");
     //console.log(child);
-    const sisa = jenisCuti.find((el) => el.id == val)
+    const sisa = jenisCuti.find((el) => el.id === val)
    // console.log(jenisCuti)
     setSisaCuti(sisa.sisacuti);
 

@@ -1,13 +1,9 @@
 import {
   Heading,
   Table,
-  TableCaption,
   TableContainer,
   Tbody,
   Td,
-  Tfoot,
-  Th,
-  Thead,
   Tr,
   Card,
   CardBody,
@@ -16,7 +12,6 @@ import {
   Button,
 } from "@chakra-ui/react";
 import React from "react";
-import useGlobal from "../../store/global";
 import Layout from "../../components/Dashboard/Layout";
 import { useNavigate, useParams } from "react-router-dom";
 import { getProfilebByUserId } from "../../services/profileService";
@@ -31,7 +26,6 @@ const statusnikah = {
   2: "Belum Menikah",
 };
 const DetailEmployee = () => {
-  const session = useGlobal((state) => state.session);
   let { userId } = useParams();
   const [detail, setDetail] = useState([]);
   const navigate = useNavigate();
