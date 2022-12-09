@@ -125,11 +125,11 @@ const Approval = () => {
                 <Td>:</Td>
                 <Td>{detail.durasi} Hari</Td>
               </Tr>
-              <Tr>
+              {/* <Tr>
                 <Td>Sisa Cuti Setelah Pengajuan</Td>
                 <Td>:</Td>
                 <Td>{detail.sisacuti - detail.durasi} Hari</Td>
-              </Tr>
+              </Tr> */}
               <Tr>
                 <Td>Alasan</Td>
                 <Td>:</Td>

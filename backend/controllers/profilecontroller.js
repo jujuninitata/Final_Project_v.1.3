@@ -1,4 +1,6 @@
 const db = require("./../models");
+// import { sequelize } from "./../models";
+const {Op} = require("sequelize")
 
 const {
   getUnitByKodeunit,
@@ -57,19 +59,57 @@ const tambahProfile = async (req, res) => {
     rw,
     roleId,
   });
-  //create jatahcuti
-  const resAddJatahCuti = await db.jatahcuti.create({
-    userid: resAdd.userid,
-    //get current year
-    periode: new Date().getFullYear(),
-    kuota: 12,
-    cutidigunakan: 0,
-    sisacuti: 12,
-  });
-  return res.status(201).json({
-    message: "register data successfully!",
-    data: resAdd,
-  });
+  // //create jatahcuti
+  // const resAddJatahCuti = await db.jatahcuti.create({
+  //   userid: resAdd.userid,
+  //   //get current year
+  //   periode: new Date().getFullYear(),
+  //   kuota: 12,
+  //   cutidigunakan: 0,
+  //   sisacuti: 12,
+  // });
+  // return res.status(201).json({
+  //   message: "register data successfully!",
+  //   data: resAdd,
+  // });
+
+    const Cekjeniskelamin =jeniskelamin == 1 ? [`a`,`b`]:[`a`]
+    const jeniscuti = await db.jeniscuti.findAll({
+      where: { [Op.not] : [{status : 0}],
+      jeniskelamin:Cekjeniskelamin
+    },
+    });
+    const mappingJenisCuti = []
+    jeniscuti.map((item)=>{
+        const cuti =
+        {
+          userid: userid,
+          idjeniscuti:item.idjeniscuti,
+          periode: new Date().getFullYear(),
+          kuota: item.maxhari,
+          cutidigunakan: 0,
+          sisacuti: item.maxhari
+        }
+        mappingJenisCuti.push(cuti)
+    })
+    const resAddJatahCutinew = await db.newjatahcuti.bulkCreate(mappingJenisCuti)
+    return res.status(201).json({
+        message: "register data successfully!",
+        data: resAdd,
+      });
+  //   const resAddJatahCutinew = await db.newjatahcuti.bulkCreate({
+  //   userid: resAdd.userid,
+  //   //get current year
+  //   periode: new Date().getFullYear(),
+  //   kuota: 12,
+  //   cutidigunakan: 0,
+  //   sisacuti: 12,
+  // });
+  // return res.status(201).json({
+  //   message: "register data successfully!",
+  //   data: resAdd,
+  // });
+
 };
 
 const getAllProfile = async (req, res) => {

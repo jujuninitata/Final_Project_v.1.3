@@ -38,7 +38,7 @@ export default function RegisterGoogle() {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleRegister = async (values) => {
-    console.log(values);
+   // console.log(values);
     setLoading(true);
     wadaw(values)
       .then(() => {

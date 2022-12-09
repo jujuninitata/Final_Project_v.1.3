@@ -23,8 +23,13 @@ const Cancel = ({ data }) => {
           <CardBody>
             <Stack spacing={4}>
               <Heading as="h4" size="md">
-                {item.jeniscuti}
+                {item.nama}
               </Heading>
+              <Text>
+                  {item.jeniscuti} dari tanggal{" "}
+                  {item.tanggalmulai.substring(0, 10)} -{" "}
+                  {item.tanggalakhir.substring(0, 10)}
+                </Text>
               <Text>{item.alasan}</Text>
             </Stack>
             <Flex mt={8} alignItems="center">

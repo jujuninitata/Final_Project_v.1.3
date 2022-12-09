@@ -36,7 +36,7 @@ const getTrxCutiByUserId = async (userid) => {
 const insertTrxCuti = async (body) => {
   const response = await post(`trxcuti`, body);
   //if response is not 401, then return response.data
-  console.log(response);
+ // console.log(response);
 
   return response;
 };
@@ -44,7 +44,7 @@ const insertTrxCuti = async (body) => {
 const updateTrxCuti = async (id, body) => {
   const response = await put(`trxcuti/${id}`, body);
   //if response is not 401, then return response.data
-  console.log(response);
+  //console.log(response);
 
   return response;
 };
@@ -52,7 +52,7 @@ const updateTrxCuti = async (id, body) => {
 const approveCuti = async (id, body) => {
   const response = await put(`trxcuti/approve/${id}`, body);
   //if response is not 401, then return response.data
-  console.log(response);
+  //console.log(response);
 
   return response;
 };
@@ -60,7 +60,7 @@ const approveCuti = async (id, body) => {
 const rejectCuti = async (id, body) => {
   const response = await put(`trxcuti/reject/${id}`, body);
   //if response is not 401, then return response.data
-  console.log(response);
+//  console.log(response);
 
   return response;
 };
@@ -68,7 +68,7 @@ const rejectCuti = async (id, body) => {
 const cancelCuti = async (id, body) => {
   const response = await put(`trxcuti/cancel/${id}`, body);
   //if response is not 401, then return response.data
-  console.log(response);
+  //console.log(response);
 
   return response;
 };

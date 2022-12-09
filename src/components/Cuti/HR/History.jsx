@@ -45,6 +45,7 @@ const History = ({ data }) => {
                   {item.tanggalmulai.substring(0, 10)} -{" "}
                   {item.tanggalakhir.substring(0, 10)}
                 </Text>
+                <Text>{item.alasan}</Text>
               </Stack>
               <Flex mt={8} alignItems="center">
                 <Box>

@@ -2,6 +2,7 @@ const router = require("express").Router();
 //const { getAllUnit } = require("../../src/services/masterservice");
 const {
   tambahagama,
+  tambahjeniscuti,
   tambahjabatan,
   tambahunit,
   tambahprovinsi,
@@ -18,6 +19,7 @@ const {
   getAllKelurahan,
 } = require("../controllers/masterController");
 router.post("/tambahagama", tambahagama);
+router.post("/tambahjeniscuti", tambahjeniscuti);
 router.post("/tambahjabatan", tambahjabatan);
 router.post("/tambahunit", tambahunit);
 router.post("/tambahprovinsi", tambahprovinsi);

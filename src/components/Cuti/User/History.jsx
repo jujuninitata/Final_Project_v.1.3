@@ -39,6 +39,9 @@ const History = ({ data }) => {
               <Heading as="h4" size="md">
                 {item.jeniscuti}
               </Heading>
+              <Text>dari tanggal{" "}
+                  {item.tanggalmulai.substring(0, 10)} -{" "}
+                  {item.tanggalakhir.substring(0, 10)}</Text> 
               <Text>{item.alasan}</Text>
             </Stack>
             <Flex mt={8} alignItems="center">

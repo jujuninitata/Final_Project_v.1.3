@@ -22,8 +22,10 @@ create model untuk user
     ,userid:string,idjenisCUti:Integer,tanggalmulai:date,tanggalakhir:date,durasi:Integer,alasan:string,status:string,createdate:date,approveby:string,approvalreason:string,approvalstatus:string
     yarn sequelize-cli db:migrate
 
+    yarn sequelize-cli model:generate --name newjatahcuti --attributes userid:STRING,idjeniscuti:INTEGER,periode:INTEGER,kuota:INTEGER,cutidigunakan:INTEGER,sisacuti:INTEGER
+
     ===master data ==
-    yarn sequelize-cli model:generate --name jeniscuti --attributes idjeniscuti:Integer,namacuti:string,maxhari:Integer,status:Integer
+    yarn sequelize-cli model:generate --name jeniscuti --attributes idjeniscuti:Integer,jeniskelamin:string,namacuti:string,maxhari:Integer,status:Integer
     yarn sequelize-cli model:generate --name agama --attributes kodeagama:Integer,agama:string,status:Integer
     yarn sequelize-cli model:generate --name unitkerja --attributes kodeunit:Integer,namaunit:string,status:Integer
     yarn sequelize-cli model:generate --name jabatan --attributes kodejabatan:Integer,namajabatan:string,status:Integer

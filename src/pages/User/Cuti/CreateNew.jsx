@@ -1,11 +1,11 @@
 import { Button, Heading, Select, Table, TableContainer, Tbody, Td, Textarea, Tr, useToast } from '@chakra-ui/react';
 import { SingleDatepicker } from 'chakra-dayzed-datepicker';
 import React, { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../../../components/Dashboard/Layout';
-import { getAllJenisCuti } from '../../../services/jenisCutiService';
-import { insertTrxCuti, getAllTrxCuti, getTrxCutiById, updateTrxCuti } from '../../../services/trxCutiService';
+import { getJenisCutibyUserId} from '../../../services/jenisCutiService';
+import { insertTrxCuti } from '../../../services/trxCutiService';
 import useGlobal from '../../../store/global';
 
 const CreateNew = () => {
@@ -15,26 +15,49 @@ const CreateNew = () => {
   const [endDate, setEndDate] = useState(new Date());
   const [durasiCuti, setDurasiCuti] = useState(0);
   const [jenisCuti, setJenisCuti] = useState([]);
+  const [sisaCuti, setSisaCuti] = useState(0);
+  
   const {
     handleSubmit,
     register,
+    trigger,
     formState: { errors, isSubmitting },
   } = useForm();
   const toast = useToast({
     position: 'top',
   });
+  
   useEffect(() => {
-    const durasi = endDate.getDate() - startDate.getDate() + 1;
+    const gettime = endDate.getTime() - startDate.getTime();
+    var durasi = Math.ceil((gettime / (1000 * 3600 * 24))+1);
     setDurasiCuti(durasi);
   }, [startDate, endDate]);
 
+  // useEffect(() => {
+  //   getAllJenisCuti().then((res) => {
+  //     console.log(res.data);
+  //     setJenisCuti(res.data);
+  //   });
+  // }, []);
+
   useEffect(() => {
-    getAllJenisCuti().then((res) => {
-      console.log(res.data);
+    getJenisCutibyUserId(session.userid).then((res) => {
+      //console.log(res.data);
       setJenisCuti(res.data);
     });
+
   }, []);
 
+  const getSisa = (e) => {
+    const child = e.target.childNodes[e.target.selectedIndex]
+    const val = child.getAttribute("id");
+    //console.log(child);
+    const sisa = jenisCuti.find((el) => el.id == val)
+   // console.log(jenisCuti)
+    setSisaCuti(sisa.sisacuti);
+
+  }
+  
   const onSubmit = (data) => {
     const payload = {
       ...data,
@@ -42,11 +65,12 @@ const CreateNew = () => {
       tanggalakhir: endDate,
       userid: session.userid,
       durasi: durasiCuti,
+      sisaCuti: sisaCuti,
       status: 1,
     };
     insertTrxCuti(payload)
       .then((res) => {
-        console.log(res);
+       // console.log(res);
         toast({
           title: 'Success.',
           description: 'Permintaan cuti berhasil dibuat.',
@@ -60,7 +84,7 @@ const CreateNew = () => {
         console.log(err);
         toast({
           title: 'Error.',
-          description: 'Terjadi kesalahan, silakan coba lagi dalam beberapa saat.',
+          description: err.response.data.message,
           status: 'error',
           duration: 3000,
           isClosable: true,
@@ -78,18 +102,19 @@ const CreateNew = () => {
                 <Td w={'40%'}>Jenis Cuti</Td>
                 <Td w={'1%'}>:</Td>
                 <Td>
-                  <Select placeholder='Jenis Cuti' {...register('idjenisCUti', { required: true })}>
-                    {/* <option value='option1'>Block Leave</option>
-                  <option value='option2'>Option 2</option>
-                  <option value='option3'>Option 3</option> */}
-                    {jenisCuti && jenisCuti.map((item) => <option value={item.id}>{item.namacuti}</option>)}
+                  <Select placeholder='Jenis Cuti' 
+                    {...register('idjenisCUti', { required: true,
+                      onChange: (e) => getSisa(e)
+                    })}
+                  >
+                    {jenisCuti && jenisCuti.map((item) => <option id={item.id} value={item.idjeniscuti}>{item.namacuti}</option>)}
                   </Select>
                 </Td>
               </Tr>
               <Tr>
                 <Td>Sisa Cuti</Td>
                 <Td>:</Td>
-                <Td>5 Hari</Td>
+                <Td>{sisaCuti}</Td>
               </Tr>
               <Tr>
                 <Td>Tanggal Mulai</Td>

@@ -160,8 +160,8 @@ const CreateNewPegawai = () => {
                     placeholder="Pilih jenis kelamin"
                     {...register("jeniskelamin", { required: true })}
                   >
-                    <option value={1}>Laki-laki</option>
-                    <option value={2}>Perempuan</option>
+                    <option value={1}>Perempuan</option>
+                    <option value={2}>Laki-laki</option>
                   </Select>
                 </Td>
               </Tr>

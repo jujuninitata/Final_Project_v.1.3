@@ -33,7 +33,7 @@ const Cancel = () => {
   const navigate = useNavigate();
   useEffect(() => {
     getTrxCutiDetail(cutiId).then((res) => {
-      console.log(res.data);
+     // console.log(res.data);
       setDetail(res.data);
     });
   }, []);
@@ -49,7 +49,7 @@ const Cancel = () => {
       alasan: catatan,
     };
     cancelCuti(cutiId, payload).then((res) => {
-      console.log(res);
+      //console.log(res);
       toast({
         title: 'Success.',
         description: 'Pengajuan berhasil Diaancel.',
@@ -107,11 +107,11 @@ const Cancel = () => {
                 <Td>:</Td>
                 <Td>{detail.durasi} Hari</Td>
               </Tr>
-              <Tr>
+              {/* <Tr>
                 <Td>Sisa Cuti Setelah Pengajuan</Td>
                 <Td>:</Td>
                 <Td>{detail.sisacuti - detail.durasi} Hari</Td>
-              </Tr>
+              </Tr> */}
               <Tr>
                 <Td>Alasan</Td>
                 <Td>:</Td>
