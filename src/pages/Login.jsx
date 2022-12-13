@@ -24,7 +24,9 @@ import { gapi } from "gapi-script";
 import LoginGoogle from "../components/LoginGoogle";
 import useGlobal from "../store/global";
 
-const clientId = process.env.GOOGLE_CLIENT_ID;;
+const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+// const clientId =
+  // "835900175009-tlp5g2fmljh20fff1enpjr5ctaljiqe7.apps.googleusercontent.com";
 
 export default function Login() {
   const setSession = useGlobal((state) => state.setSession);

@@ -6,7 +6,9 @@ import { useNavigate } from "react-router-dom";
 import { loginWithGoogle } from "../../services/authService";
 import Cookies from "js-cookie";
 
-const clientId = process.env.GOOGLE_CLIENT_ID;
+const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+// const clientId =
+//   "835900175009-tlp5g2fmljh20fff1enpjr5ctaljiqe7.apps.googleusercontent.com";
 
 const LoginGoogle = () => {
   const navigate = useNavigate();
