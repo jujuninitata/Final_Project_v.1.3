@@ -68,8 +68,7 @@ const Pegawai = () => {
                           navigate(`/hr/pegawai/detail/${item.userid}`)
                         }
                       />
-                      <AiFillEdit />
-                      <FiTrash2 />
+                      
                     </HStack>
                   </Td>
                 </Tr>
